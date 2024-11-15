@@ -1,0 +1,280 @@
+﻿@{
+    ViewData["Title"] = "Fuze Tea - Refréscate Naturalmente";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+
+<style>
+    :root {
+        --fuze-green: #8bc34a;
+        --fuze-dark: #7cb342;
+        --fuze-light: #dcedc8;
+    }
+
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .section-padding {
+        padding: 100px 0;
+    }
+
+ 
+    .hero-section {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/fuze-tea-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        color: white;
+        background-image: url(https://www.coca-cola.com/content/dam/onexp/cr/es/brands/fuze-tea/fuze-tea-hero-banner-1144x810.jpg/width1960.jpg)
+    }
+
+  
+    .navbar-fuze {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-link {
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+        .nav-link:hover {
+            color: var(--fuze-green);
+        }
+
+ 
+    .product-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+  
+    .benefit-icon {
+        font-size: 3rem;
+        color: var(--fuze-green);
+        margin-bottom: 1rem;
+    }
+
+    .parallax-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/fuze-tea-ingredients.jpg') fixed;
+        background-size: cover;
+        color: white;
+        padding: 150px 0;
+        background-image: url(https://imgs.search.brave.com/86oJWKtc2Y2bHdiDsDBnZelfDKA0alhtlwBMrBf1uEY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y29jYS1jb2xhLmNv/bS9jb250ZW50L2Rh/bS9vbmV4cC9lcy9l/cy9tZWRpYS1jZW50/ZXIvZnV6ZXRlYS1k/ZXNrdG9wLTIwMjMu/anBn)
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+   
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-fuze fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://www.coca-cola.com/content/dam/onexp/es/es/brand/fuze-tea/fuze-tea-logo.png" alt="Fuze Tea Logo" height="40">
+
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#beneficios">Beneficios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Privacy">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="inicio" class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 animate__animated animate__fadeInLeft">
+                <h1 class="display-3 fw-bold mb-4">Descubre el Equilibrio Perfecto</h1>
+                <p class="lead mb-4">Una fusión única de té natural y sabores refrescantes para despertar tus sentidos</p>
+                <a href="#productos" class="btn btn-lg btn-light me-3 shado">Descubre más</a>
+                <a href="#contacto" class="btn btn-lg btn-outline-light">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="productos" class="section-padding bg-light align-content-center">
+    <div class="container align-content-center">
+        <h2 class="text-center mb-5 fade-in">Nuestros Sabores</h2>
+        <div class="row g-4">
+           
+            <div class="row">
+        @foreach (var producto in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow">
+                    <img src="@producto.Image" class="card-img-top" alt="@producto.Nombre">
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.Nombre</h5>
+                        <p class="card-text">@producto.Descripcion</p>
+                        <span class="badge bg-primary">@producto.Caracteristica</span>
+                        <a asp-action="Details" asp-route-id="@producto.Id" 
+                           class="btn btn-outline-primary mt-2">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+            }
+        
+        </div>
+    </div>
+</section>
+
+<section id="beneficios" class="section-padding">
+    <div class="container">
+        <h2 class="text-center mb-5 fade-in">Beneficios de Fuze Tea</h2>
+        <div class="row g-4">
+            <div class="col-md-4 text-center fade-in">
+                <i class="fas fa-leaf benefit-icon"></i>
+                <h4>100% Natural</h4>
+                <p>Elaborado con hojas de té seleccionadas y frutas naturales.</p>
+            </div>
+            <div class="col-md-4 text-center fade-in">
+                <i class="fas fa-bolt benefit-icon"></i>
+                <h4>Energía Natural</h4>
+                <p>Antioxidantes naturales que te ayudan a mantener tu energía.</p>
+            </div>
+            <div class="col-md-4 text-center fade-in">
+                <i class="fas fa-heart benefit-icon"></i>
+                <h4>Bajo en Calorías</h4>
+                <p>Disfruta sin culpa con nuestras opciones bajas en calorías.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="parallax-section">
+    <div class="container text-center">
+        <h2 class="mb-4">La Fusión Perfecta de Naturaleza y Sabor</h2>
+        <p class="lead">Cada botella contiene la perfecta combinación de té natural y frutas frescas</p>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 fade-in">
+                <h2 class="mb-4">Ingredientes Naturales</h2>
+                <p class="lead mb-4">En Fuze Tea, seleccionamos cuidadosamente cada ingrediente para garantizar la mejor calidad y sabor.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Té verde y negro de primera calidad</li>
+                    <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Frutas naturales seleccionadas</li>
+                    <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Sin conservantes artificiales</li>
+                    <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Endulzantes naturales</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 fade-in">
+                <img src="https://imgs.search.brave.com/t9j3BvQ91fRsFQjY_kpVuBLSxnaQiBuxV57DpbcRAek/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90aGVm/b29kdGVjaC5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMjQv/MTAvRGlhLW11bmRp/YWwtZGUtbGEtYWxp/bWVudGFjaW9uLTEu/d2VicA" alt="Ingredientes Fuze Tea" class="img-fluid rounded-3 shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-padding">
+    <div class="container">
+        <h2 class="text-center mb-5 fade-in">Comprometidos con el Planeta</h2>
+        <div class="row g-4">
+            <div class="col-md-4 fade-in">
+                <div class="text-center">
+                    <i class="fas fa-recycle benefit-icon"></i>
+                    <h4>Envases Reciclables</h4>
+                    <p>Nuestras botellas son 100% reciclables y utilizamos material reciclado en su producción.</p>
+                </div>
+            </div>
+            <div class="col-md-4 fade-in">
+                <div class="text-center">
+                    <i class="fas fa-seedling benefit-icon"></i>
+                    <h4>Agricultura Sostenible</h4>
+                    <p>Trabajamos con agricultores que practican métodos de cultivo sostenibles.</p>
+                </div>
+            </div>
+            <div class="col-md-4 fade-in">
+                <div class="text-center">
+                    <i class="fas fa-water benefit-icon"></i>
+                    <h4>Ahorro de Agua</h4>
+                    <p>Implementamos procesos de producción que minimizan el consumo de agua.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    
+    <script>
+   
+        function checkFade() {
+            $('.fade-in').each(function () {
+                var elementTop = $(this).offset().top;
+                var windowBottom = $(window).scrollTop() + $(window).height();
+
+                if (elementTop < windowBottom) {
+                    $(this).addClass('visible');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            checkFade();
+            $(window).scroll(checkFade);
+
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($(this).attr('href')).offset().top - 70
+                }, 500, 'linear');
+            });
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > 50) {
+                    $('.navbar-fuze').addClass('shadow');
+                } else {
+                    $('.navbar-fuze').removeClass('shadow');
+                }
+            });
+
+        
+        });
+    </script>
+}

@@ -1,0 +1,297 @@
+﻿@model ContactForm
+@{
+    ViewData["Title"] = "Contacto - Fuze Tea";
+}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+
+<style>
+    .hero-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/fuze-tea-bg.jpg');
+        background-size: cover;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        margin-top: -50px;
+        position: relative;
+    }
+
+    .form-floating > label {
+        color: #666;
+    }
+
+    .form-control:focus {
+        border-color: #8bc34a;
+        box-shadow: 0 0 0 0.25rem rgba(139, 195, 74, 0.25);
+    }
+
+    .btn-fuze {
+        background-color: #8bc34a;
+        border: none;
+        padding: 10px 30px;
+        transition: all 0.3s ease;
+    }
+
+        .btn-fuze:hover {
+            background-color: #7cb342;
+            transform: translateY(-2px);
+        }
+
+    .input-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #8bc34a;
+    }
+
+    .success-message {
+        animation: fadeInDown 1s ease;
+    }
+
+    :root {
+        --fuze-green: #8bc34a;
+        --fuze-dark: #7cb342;
+        --fuze-light: #dcedc8;
+    }
+
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .section-padding {
+        padding: 100px 0;
+    }
+
+
+    .hero-section {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/fuze-tea-hero.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        color: white;
+    }
+
+
+    .navbar-fuze {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-link {
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+        .nav-link:hover {
+            color: var(--fuze-green);
+        }
+
+
+    .product-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+
+    .benefit-icon {
+        font-size: 3rem;
+        color: var(--fuze-green);
+        margin-bottom: 1rem;
+    }
+
+    .parallax-section {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/fuze-tea-ingredients.jpg') fixed;
+        background-size: cover;
+        color: white;
+        padding: 150px 0;
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-fuze fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://www.coca-cola.com/content/dam/onexp/es/es/brand/fuze-tea/fuze-tea-logo.png" alt="Fuze Tea Logo" height="40">
+
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#beneficios">Beneficios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Privacy">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-fuze fixed-top mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://www.coca-cola.com/content/dam/onexp/es/es/brand/fuze-tea/fuze-tea-logo.png" alt="Fuze Tea Logo" height="40">
+
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/#Productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/#Beneficios">Beneficios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Privacy">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container my-5 mt-5">
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success success-message" role="alert">
+            <i class="fas fa-check-circle me-2"></i>
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container animate__animated animate__fadeInUp mt-5">
+                <form asp-action="Contact" method="post" class="needs-validation" novalidate>
+                    @Html.AntiForgeryToken()
+                    <h1 class="text-center mb-5 mt-3 card-header text-nowrap text-break"> Contáctanos</h1>
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Name" class="form-control" placeholder="Nombre">
+                        <label asp-for="Name">Nombre</label>
+                        <i class="fas fa-user input-icon"></i>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Email" class="form-control" placeholder="Email">
+                        <label asp-for="Email">Email</label>
+                        <i class="fas fa-envelope input-icon"></i>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Phone" class="form-control" placeholder="Teléfono">
+                        <label asp-for="Phone">Teléfono</label>
+                        <i class="fas fa-phone input-icon"></i>
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select asp-for="FavoriteFlavor" class="form-select">
+                            <option value="">Selecciona un sabor</option>
+                            <option value="Limón">Limón</option>
+                            <option value="Durazno">Durazno</option>
+                            <option value="Mango">Mango</option>
+                            <option value="Frutos Rojos">Frutos Rojos</option>
+                        </select>
+                        <label asp-for="FavoriteFlavor">Sabor Favorito</label>
+                        <span asp-validation-for="FavoriteFlavor" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3 position-relative">
+                        <input asp-for="Age" class="form-control" placeholder="Edad">
+                        <label asp-for="Age">Edad</label>
+                        <i class="fas fa-birthday-cake input-icon"></i>
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea asp-for="Message" class="form-control" placeholder="Mensaje" style="height: 150px"></textarea>
+                        <label asp-for="Message">Mensaje</label>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-fuze btn-lg text-white">
+                            <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      
+        $(document).ready(function () {
+            $('.form-floating').each(function (index) {
+                $(this).addClass('animate__animated animate__fadeInLeft')
+                    .css('animation-delay', (index * 0.1) + 's');
+            });
+
+           
+            $('form').on('submit', function () {
+                if ($(this).valid()) {
+                    $('.btn-fuze').addClass('animate__animated animate__pulse');
+                }
+            });
+
+          
+        });
+    </script>
+}
